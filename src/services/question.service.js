@@ -1,4 +1,5 @@
 const questionModel = require("../models/question.model");
+const { findQuestionByDescription } = require("../models/repositories/question.repo");
 const { getRandomIndex } = require("../utils");
 
 class QuestionService {
@@ -9,7 +10,7 @@ class QuestionService {
     }
 
     static createQuestion = async ({questionDescription, optionText}) => {
-        const questionExist = await questionModel.findOne({question_description: questionDescription}).lean();
+        const questionExist = findQuestionByDescription(questionDescription);
         if(!questionExist) {
             const newQuestion = await questionModel.create({question_description: questionDescription, option_text: optionText});
             return {

@@ -2,6 +2,6 @@ const express = require("express");
 const anwerController = require("../../controllers/anwer.controller");
 const router = express.Router();
 
-router.use('', anwerController.userAnswer)
+router.post('', anwerController.userAnswer)
 
 module.exports = router;

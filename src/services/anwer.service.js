@@ -1,20 +1,36 @@
 const anwerModel = require("../models/anwer.model")
 
 class AnswerService {
-    static userAnswer = async ({name, question, answer }) => {
+    static userAnswer = async ({user, question, answer }) => {
         try {
-            const nameExist = await anwerModel.findOne({user_name: name}).lean();
-            if(nameExist) {
+            const userExist = await anwerModel.findOne({user_name: user}, {}).lean();
+            if(userExist) {
                 return {
-                    message: "Người này đã trả lời câu hỏi!"
+                    message: "Người này đã trả lời!"
                 }
             };
+            if(!user) {
+                return {
+                    message: "Vui lòng nhập tên!!"
+                }
+            }
+            
+            const newUser = await anwerModel.create({
+                user_name: user,
+                answer,
+                question
+            })
+
+            return newUser
         } catch (error) {
             return {
                 message: error
             };
         };
     };
+
+
+
 };
 
 module.exports = AnswerService

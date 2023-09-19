@@ -7,19 +7,15 @@ var answerSchema = new Schema(
   {
     user_name: {
       type: String,
-      require: true,
       maxLength: 150,
+      require: true,
     },
     question: {
       type: Schema.Types.ObjectId,
     },
     answer: {
-      type: String,
+      type: Schema.Types.ObjectId,
     },
-    phase: {
-      type: String,
-      require: true
-    }
   },
   {
     timestamps: true,
