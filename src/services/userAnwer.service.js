@@ -1,9 +1,9 @@
-const anwerModel = require("../models/anwer.model")
+const userAnwerModel = require("../models/userAnwer.model");
 
-class AnswerService {
+class UserAnswerService {
     static userAnswer = async ({user, question, answer }) => {
         try {
-            const userExist = await anwerModel.findOne({user_name: user}, {}).lean();
+            const userExist = await userAnwerModel.findOne({user_name: user}, {}).lean();
             if(userExist) {
                 return {
                     message: "Người này đã trả lời!"
@@ -15,7 +15,7 @@ class AnswerService {
                 }
             }
             
-            const newUser = await anwerModel.create({
+            const newUser = await userAnwerModel.create({
                 user_name: user,
                 answer,
                 question
@@ -33,4 +33,4 @@ class AnswerService {
 
 };
 
-module.exports = AnswerService
+module.exports = UserAnswerService

@@ -3,7 +3,7 @@ const { Schema, model } = require("mongoose");
 const DOCUMENT_NAME = "User";
 const COLLECTION_NAME = "Users";
 
-var answerSchema = new Schema(
+var userAnswerSchema = new Schema(
   {
     user_name: {
       type: String,
@@ -12,10 +12,22 @@ var answerSchema = new Schema(
     },
     question: {
       type: Schema.Types.ObjectId,
+      require: true,
     },
-    answer: {
+    slected_answer: {
       type: Schema.Types.ObjectId,
+      require: true,
     },
+    answer_timer: {
+      type: Number,
+      require: true,
+      default: Date.now,
+    },
+    prediction: {
+      type: Number,
+      require: true,
+      default: 0,
+    }
   },
   {
     timestamps: true,
@@ -23,4 +35,4 @@ var answerSchema = new Schema(
   }
 );
 
-module.exports = model(DOCUMENT_NAME, answerSchema);
+module.exports = model(DOCUMENT_NAME, userAnswerSchema);
