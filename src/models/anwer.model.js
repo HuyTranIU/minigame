@@ -3,19 +3,23 @@ const { Schema, model } = require("mongoose");
 const DOCUMENT_NAME = "User";
 const COLLECTION_NAME = "Users";
 
-var userSchema = new Schema(
+var answerSchema = new Schema(
   {
-    name: {
+    user_name: {
       type: String,
       require: true,
       maxLength: 150,
     },
     question: {
-      type: Schema.ObjectId,
+      type: Schema.Types.ObjectId,
     },
     answer: {
       type: String,
     },
+    phase: {
+      type: String,
+      require: true
+    }
   },
   {
     timestamps: true,
@@ -23,4 +27,4 @@ var userSchema = new Schema(
   }
 );
 
-module.exports = model(DOCUMENT_NAME, userSchema);
+module.exports = model(DOCUMENT_NAME, answerSchema);

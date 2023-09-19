@@ -3,13 +3,13 @@ const { Schema, model } = require("mongoose");
 const DOCUMENT_NAME = "Question";
 const COLLECTION_NAME = "Questions";
 
-var questionSchema = new Schema(
+const questionSchema = new Schema(
   {
-    questioDescription: {
+    question_description: {
       type: String,
       require: true
     },
-    alternatives: [
+    option_text: [
         {
             text: {
                 type: String,
