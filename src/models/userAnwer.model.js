@@ -14,7 +14,7 @@ var userAnswerSchema = new Schema(
       type: Schema.Types.ObjectId,
       require: true,
     },
-    slected_answer: {
+    selected_answer: {
       type: Schema.Types.ObjectId,
       require: true,
     },
@@ -27,7 +27,7 @@ var userAnswerSchema = new Schema(
       type: Number,
       require: true,
       default: 0,
-    }
+    },
   },
   {
     timestamps: true,
